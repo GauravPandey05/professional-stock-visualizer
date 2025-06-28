@@ -103,63 +103,8 @@ function DashboardMain({
       {/* Main Content - Only show when we have data */}
       {stockData && quantMetrics && (
         <div className="space-y-6">
-          {/* Stock Overview */}
-          <Card className="p-6">
-            <div className="flex items-start justify-between mb-6">
-              <div>
-                <div className="flex items-center gap-3 mb-2">
-                  <h2 className="text-3xl font-bold text-foreground">{stockData.symbol}</h2>
-                  <Badge variant="secondary">{stockData.sector}</Badge>
-                  <Badge variant="default" size="sm">Live Data</Badge>
-                </div>
-                <h3 className="text-lg text-muted-foreground font-medium">{stockData.name}</h3>
-              </div>
-              <div className="text-right">
-                <div className="text-3xl font-bold text-foreground">
-                  ${stockData.currentPrice.toFixed(2)}
-                </div>
-                <div className={cn(
-                  "text-lg font-semibold",
-                  stockData.change >= 0 ? 'text-green-600' : 'text-red-600'
-                )}>
-                  {stockData.change >= 0 ? '+' : ''}{stockData.change.toFixed(2)} 
-                  ({stockData.changePercent.toFixed(2)}%)
-                </div>
-              </div>
-            </div>
-
-            {/* Key Metrics Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-              <div className="p-3 bg-muted/30 rounded-lg">
-                <div className="text-xs text-muted-foreground mb-1">Market Cap</div>
-                <div className="font-semibold">${(stockData.marketCap / 1e9).toFixed(1)}B</div>
-              </div>
-              <div className="p-3 bg-muted/30 rounded-lg">
-                <div className="text-xs text-muted-foreground mb-1">Volume</div>
-                <div className="font-semibold">{(stockData.volume / 1e6).toFixed(1)}M</div>
-              </div>
-              <div className="p-3 bg-muted/30 rounded-lg">
-                <div className="text-xs text-muted-foreground mb-1">52W High</div>
-                <div className="font-semibold">${stockData.high52Week.toFixed(2)}</div>
-              </div>
-              <div className="p-3 bg-muted/30 rounded-lg">
-                <div className="text-xs text-muted-foreground mb-1">52W Low</div>
-                <div className="font-semibold">${stockData.low52Week.toFixed(2)}</div>
-              </div>
-              {stockData.fundamentals && (
-                <>
-                  <div className="p-3 bg-muted/30 rounded-lg">
-                    <div className="text-xs text-muted-foreground mb-1">P/E Ratio</div>
-                    <div className="font-semibold">{stockData.fundamentals.peRatio.toFixed(1)}</div>
-                  </div>
-                  <div className="p-3 bg-muted/30 rounded-lg">
-                    <div className="text-xs text-muted-foreground mb-1">Beta</div>
-                    <div className="font-semibold">{stockData.fundamentals.beta.toFixed(2)}</div>
-                  </div>
-                </>
-              )}
-            </div>
-          </Card>
+          
+          
 
           {/* Risk Dashboard - Clean Integration */}
           <RiskDashboard 

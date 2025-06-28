@@ -19,10 +19,16 @@ const LivePriceIndicator: React.FC<LivePriceIndicatorProps> = ({
   size = 'md',
   variant = 'detailed'
 }) => {
-  const { realTimePrices, isConnected, connectionStatus, lastUpdate } = useRealTimeData();
+  const { realTimePrices, isConnected, connectionStatus, lastUpdate,subscribe,unsubscribe } = useRealTimeData();
   const realTimePrice = realTimePrices[symbol.toUpperCase()];
   const [priceAnimation, setPriceAnimation] = useState<'up' | 'down' | null>(null);
   const [previousPrice, setPreviousPrice] = useState<number | null>(null);
+
+  useEffect(() => {
+    const upperSymbol = symbol.toUpperCase();
+    subscribe(upperSymbol);
+    return () => unsubscribe(upperSymbol);
+  }, [symbol, subscribe, unsubscribe]);
 
   // 🚀 Animate price changes
   useEffect(() => {

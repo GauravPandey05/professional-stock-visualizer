@@ -45,11 +45,7 @@ export const useRealTimeData = (initialSymbols: string[] = []): RealTimeDataHook
   }, [subscribedSymbols]);
 
   const simulatePriceUpdate = useCallback(() => {
-    const symbols = Array.from(
-      subscribedSymbolsRef.current.size
-        ? subscribedSymbolsRef.current
-        : new Set(initialSymbols.length ? initialSymbols : ['AAPL'])
-    );
+    const symbols = Array.from(subscribedSymbolsRef.current);
 
     setRealTimePrices(prev => {
       const updates: Record<string, RealTimePrice> = {};
@@ -83,7 +79,7 @@ export const useRealTimeData = (initialSymbols: string[] = []): RealTimeDataHook
     });
 
     setLastUpdate(new Date());
-  }, [initialSymbols]);
+  }, []);
 
   const startSimulation = useCallback(() => {
     console.log('🔧 Starting price simulation...');
