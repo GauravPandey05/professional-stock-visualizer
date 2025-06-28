@@ -1,0 +1,296 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 221 83% 53%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 13% 37%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222 84% 4.9%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 221 83% 53%;
+    --radius: 0.75rem;
+    
+    /* Professional Trading Colors */
+    --bull-color: 142 71% 45%;
+    --bear-color: 0 84% 60%;
+    --neutral-color: 215 13% 37%;
+    --success-color: 142 71% 45%;
+    --danger-color: 0 84% 60%;
+    --warning-color: 43 96% 56%;
+    
+    /* Risk Assessment Colors */
+    --risk-low: 142 71% 45%;
+    --risk-medium: 43 96% 56%;
+    --risk-high: 0 84% 60%;
+    --risk-extreme: 0 72% 51%;
+    
+    /* Quantitative Colors */
+    --quant-primary: 221 83% 53%;
+    --quant-secondary: 210 40% 96%;
+    --quant-accent: 142 71% 45%;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 221 83% 53%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 240 4% 16%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 4% 16%;
+    --muted-foreground: 215 13% 65%;
+    --accent: 240 4% 16%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 4% 16%;
+    --input: 240 4% 16%;
+    --ring: 221 83% 53%;
+    
+    /* Dark Theme Trading Colors */
+    --bull-color: 142 71% 55%;
+    --bear-color: 0 84% 70%;
+    --neutral-color: 215 13% 65%;
+    --success-color: 142 71% 55%;
+    --danger-color: 0 84% 70%;
+    --warning-color: 43 96% 66%;
+    
+    /* Dark Theme Risk Colors */
+    --risk-low: 142 71% 55%;
+    --risk-medium: 43 96% 66%;
+    --risk-high: 0 84% 70%;
+    --risk-extreme: 0 72% 61%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-display;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Professional scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-muted/30;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/30 rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/50;
+  }
+}
+
+@layer components {
+  /* Professional Card Variants */
+  .card-gradient {
+    @apply bg-gradient-to-br from-card via-card to-secondary/20 border border-border/60;
+  }
+  
+  .card-elevated {
+    @apply bg-card border border-border shadow-lg hover:shadow-xl transition-shadow duration-300;
+  }
+  
+  .card-institutional {
+    @apply bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-blue-950 border-l-4 border-l-primary;
+  }
+  
+  /* Risk Level Styling */
+  .risk-low {
+    @apply bg-green-50 dark:bg-green-950/20 border-green-200 dark:border-green-800/30 text-green-700 dark:text-green-300;
+  }
+  
+  .risk-medium {
+    @apply bg-yellow-50 dark:bg-yellow-950/20 border-yellow-200 dark:border-yellow-800/30 text-yellow-700 dark:text-yellow-300;
+  }
+  
+  .risk-high {
+    @apply bg-red-50 dark:bg-red-950/20 border-red-200 dark:border-red-800/30 text-red-700 dark:text-red-300;
+  }
+  
+  .risk-extreme {
+    @apply bg-red-100 dark:bg-red-950/30 border-red-300 dark:border-red-700/40 text-red-800 dark:text-red-200;
+  }
+  
+  /* Financial Metrics Styling */
+  .metric-positive {
+    @apply text-green-600 dark:text-green-400 font-semibold;
+  }
+  
+  .metric-negative {
+    @apply text-red-600 dark:text-red-400 font-semibold;
+  }
+  
+  .metric-neutral {
+    @apply text-muted-foreground font-medium;
+  }
+  
+  .financial-number {
+    @apply font-mono text-sm tabular-nums;
+  }
+  
+  /* Professional Table Styling */
+  .financial-table {
+    @apply w-full border-collapse bg-card rounded-lg overflow-hidden shadow-sm border border-border;
+  }
+  
+  .financial-table th {
+    @apply bg-muted/50 text-muted-foreground text-xs font-semibold uppercase tracking-wider px-4 py-3 text-left border-b border-border;
+  }
+  
+  .financial-table td {
+    @apply px-4 py-3 text-sm border-b border-border/50 font-mono tabular-nums;
+  }
+  
+  .financial-table tr:hover {
+    @apply bg-muted/20;
+  }
+  
+  /* Chart Container Styling */
+  .chart-container {
+    @apply bg-card rounded-lg border border-border p-6 shadow-sm hover:shadow-md transition-shadow;
+  }
+  
+  .chart-professional {
+    @apply bg-gradient-to-br from-card to-secondary/10 border-l-4 border-l-primary rounded-lg p-6;
+  }
+  
+  /* Professional Tooltip Styling */
+  .tooltip-professional {
+    @apply bg-popover text-popover-foreground px-3 py-2 text-xs rounded-md shadow-lg border border-border font-medium max-w-xs;
+    z-index: 1000;
+  }
+  
+  /* Loading States */
+  .skeleton {
+    @apply animate-pulse bg-muted/50 rounded;
+  }
+  
+  .skeleton-text {
+    @apply skeleton h-4 w-full mb-2;
+  }
+  
+  .skeleton-number {
+    @apply skeleton h-6 w-20;
+  }
+  
+  /* Animations */
+  .animate-slide-up {
+    animation: slide-up 0.3s ease-out;
+  }
+  
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-out;
+  }
+  
+  /* Responsive Typography */
+  .text-financial {
+    @apply text-sm leading-5 tracking-wide font-mono tabular-nums;
+  }
+  
+  .text-metric {
+    @apply text-2xl font-bold font-mono tabular-nums;
+  }
+  
+  /* Professional Buttons */
+  .btn-professional {
+    @apply inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
+  }
+  
+  .btn-primary {
+    @apply btn-professional bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2;
+  }
+  
+  .btn-secondary {
+    @apply btn-professional bg-secondary text-secondary-foreground hover:bg-secondary/80 px-4 py-2;
+  }
+  
+  .btn-outline {
+    @apply btn-professional border border-input bg-background hover:bg-accent hover:text-accent-foreground px-4 py-2;
+  }
+}
+
+@layer utilities {
+  /* Professional spacing utilities */
+  .section-padding {
+    @apply px-4 py-8 sm:px-6 lg:px-8;
+  }
+  
+  .container-professional {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+  
+  /* Typography utilities */
+  .heading-professional {
+    @apply text-2xl font-bold tracking-tight text-foreground sm:text-3xl;
+  }
+  
+  .subheading-professional {
+    @apply text-lg font-semibold text-foreground;
+  }
+  
+  .text-professional {
+    @apply text-sm text-muted-foreground leading-relaxed;
+  }
+  
+  /* Layout utilities */
+  .grid-professional {
+    @apply grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
+  }
+  
+  .flex-between {
+    @apply flex items-center justify-between;
+  }
+  
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+  
+  /* Visual emphasis utilities */
+  .border-professional {
+    @apply border border-border/60 hover:border-border transition-colors;
+  }
+  
+  .shadow-professional {
+    @apply shadow-sm hover:shadow-md transition-shadow duration-200;
+  }
+  
+  .gradient-professional {
+    @apply bg-gradient-to-br from-background via-background to-secondary/20;
+  }
+}
