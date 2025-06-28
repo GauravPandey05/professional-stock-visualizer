@@ -1123,9 +1123,7 @@ const IndicatorChart: React.FC<IndicatorChartProps> = ({
       <div className="flex items-center justify-between p-4 border-b border-border">
         <h3 className="font-semibold">Technical Indicators</h3>
         <div className="flex items-center gap-2">
-          <Badge variant="default" size="sm">
-            {interactive ? '🔥 Interactive' : '📊 Static'}
-          </Badge>
+          
           <Button
             variant="ghost"
             size="sm"

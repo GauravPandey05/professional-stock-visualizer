@@ -37,7 +37,7 @@ export const useAlerts = (symbols: string[] = []): UseAlertsHook => {
   const priceHistoryRef = useRef<{ [symbol: string]: number[] }>({});
 
   // Get real-time data for monitoring
-  const { realTimePrices } = useRealTimeData(symbols);
+  const { realTimePrices,subscribe } = useRealTimeData(symbols);
 
   // 🚀 Load alerts from localStorage on mount
   useEffect(() => {
@@ -72,7 +72,7 @@ export const useAlerts = (symbols: string[] = []): UseAlertsHook => {
         console.error('Failed to load saved alerts:', error);
       }
     }
-  }, []);
+  }, [subscribe]);
 
   // 🚀 Save alerts to localStorage when they change
   useEffect(() => {

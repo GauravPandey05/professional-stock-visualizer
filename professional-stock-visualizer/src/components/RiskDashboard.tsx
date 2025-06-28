@@ -37,13 +37,7 @@ const ProfessionalTradingChart = memo(({ symbol, height = 500 }: {
   return (
     <div className="space-y-4">
       {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h3 className="text-lg font-semibold">💹 {symbol} Professional Chart</h3>
-          <p className="text-sm text-muted-foreground">Interactive candlestick with volume</p>
-        </div>
-        <Badge variant="success" size="sm">🔥 Interactive</Badge>
-      </div>
+      
       
       {/* 🚀 FIXED: Direct chart rendering - NO white box container */}
       <TradingChart 
@@ -76,14 +70,7 @@ const ProfessionalVolumeChart = memo(({ data, symbol, height = 400 }: {
 
   return (
     <div className="w-full bg-transparent"> {/* 🚀 NO containers */}
-      {/* Minimal header */}
-      <div className="flex items-center justify-between mb-3">
-        <div>
-          <h3 className="text-lg font-semibold">📊 {symbol} Volume Analysis</h3>
-          <p className="text-sm text-muted-foreground">Interactive volume bars and profile</p>
-        </div>
-        <Badge variant="success" size="sm">🔥 Full-Width</Badge>
-      </div>
+      
       
       {/* 🚀 MAXIMIZED: Full-width volume chart */}
       <div className="w-full border border-border/20 rounded-lg overflow-hidden">
@@ -154,19 +141,7 @@ const ProfessionalIndicatorChart = memo(({ data, symbol, height = 400 }: {
 
   return (
     <div className="space-y-4">
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h3 className="text-lg font-semibold flex items-center gap-2">
-            <Target className="w-5 h-5 text-primary" />
-            🎯 {symbol} Technical Indicators
-          </h3>
-          <p className="text-sm text-muted-foreground">
-            RSI: {currentRSI.toFixed(1)} • MACD: {macdSignal}
-          </p>
-        </div>
-        <Badge variant="success" size="sm">🔥 Interactive</Badge>
-      </div>
+      
       
       {/* 🚀 FIXED: Interactive Indicator Chart */}
       <IndicatorChart 
@@ -663,9 +638,9 @@ const RiskDashboard: React.FC<RiskDashboardProps> = ({
         <div className="flex items-center justify-between">
           <div>
             <h2 className="text-2xl font-bold tracking-tight">{symbol} Risk & Chart Analysis</h2>
-            <p className="text-muted-foreground">Professional quantitative analysis with live charts</p>
+            
             <p className="text-xs text-muted-foreground mt-1">
-              📊 {chartDataPoints.length} data points | 📈 All Charts Active
+              📊 {chartDataPoints.length} data points 
             </p>
           </div>
           
@@ -676,7 +651,7 @@ const RiskDashboard: React.FC<RiskDashboardProps> = ({
             <Badge variant={sharpeRating.rating === 'Excellent' ? 'default' : 'secondary'}>
               {sharpeRating.rating}
             </Badge>
-            <Badge variant="success" size="sm">✅ Charts Fixed</Badge>
+            <Badge variant="success" size="sm"></Badge>
           </div>
         </div>
       </div>
