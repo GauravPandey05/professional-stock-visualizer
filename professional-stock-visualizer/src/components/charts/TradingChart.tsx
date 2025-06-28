@@ -1002,10 +1002,7 @@ const TradingChart: React.FC<TradingChartProps> = ({
                 Last updated: {lastUpdated.toLocaleTimeString()}
                 {isRealTime && <span className="ml-2">• Real-time data</span>}
               </div>
-              <div className="flex items-center gap-2">
-                <Badge variant="success" size="sm">✅ Charts Active</Badge>
-                {interactive && <Badge variant="default" size="sm">🔥 Interactive</Badge>}
-              </div>
+              
             </div>
           </div>
         )}
